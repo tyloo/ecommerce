@@ -32,7 +32,7 @@ export const RecentPost = () => {
       {isLoadingPosts ? (
         <p className='text-base/6 text-[#ececf399]'>Loading posts...</p>
       ) : recentPost ? (
-        <p className='text-base/6 text-[#ececf399]'>Your recent post: "{recentPost.name}"</p>
+        <p className='text-base/6 text-[#ececf399]'>Your recent post: &quot;{recentPost.name}&quot;</p>
       ) : (
         <p className='text-base/6 text-[#ececf399]'>You have no posts yet.</p>
       )}
