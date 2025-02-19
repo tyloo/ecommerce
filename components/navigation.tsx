@@ -14,9 +14,10 @@ import {
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { navigation } from '@/data/navigation'
-import { ChevronRight, Mail, Menu, MessageCircleQuestion, ShoppingBag, Truck, User } from 'lucide-react'
+import { ChevronRight, Mail, Menu, MessageCircleQuestion, Truck, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CartMenu } from './cart-menu'
 
 export function Navigation() {
   return (
@@ -111,9 +112,7 @@ function DesktopNavigation() {
         <Button variant='ghost' size='icon'>
           <User />
         </Button>
-        <Button variant='ghost' size='icon'>
-          <ShoppingBag />
-        </Button>
+        <CartMenu />
       </div>
     </div>
   )
@@ -192,9 +191,7 @@ function MobileNavigation() {
         <Button variant='ghost' size='icon'>
           <User />
         </Button>
-        <Button variant='ghost' size='icon'>
-          <ShoppingBag />
-        </Button>
+        <CartMenu />
       </div>
     </div>
   )
