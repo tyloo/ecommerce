@@ -1,5 +1,5 @@
-import { j } from './jstack'
-import { postRouter } from './routers/post-router'
+import { j } from '@/server/jstack'
+import { postRouter } from '@/server/routers/post-router'
 
 /**
  * This is your base API.
