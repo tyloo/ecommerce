@@ -26,9 +26,9 @@ export function MobileNavigation() {
             <Separator />
             <Accordion type='single' collapsible className='text-md w-full'>
               {navigation.map((link, index) => (
-                <AccordionItem value={`item-${index}`}>
+                <AccordionItem key={`item-${index}`} value={`item-${index}`}>
                   <AccordionTrigger className='p-4'>
-                    <Link href={link.href} className='text-md font-bold uppercase'>
+                    <Link href={link.href!} className='text-md font-bold uppercase'>
                       {link.title}
                     </Link>
                   </AccordionTrigger>
@@ -37,9 +37,9 @@ export function MobileNavigation() {
                       {link.items?.map((item) => (
                         <>
                           <div className='bg-primary/30 text-background p-4 font-bold uppercase'>{item.title}</div>
-                          {item.subItems?.map((subItem) => (
-                            <div className='hover:bg-primary/10 p-4 uppercase'>
-                              <Link href={subItem.href} className='hover:underline'>
+                          {item.items?.map((subItem) => (
+                            <div key={`sub-item-${subItem.title}`} className='hover:bg-primary/10 p-4 uppercase'>
+                              <Link href={subItem.href!} className='hover:underline'>
                                 {subItem.title}
                               </Link>
                             </div>
@@ -52,22 +52,22 @@ export function MobileNavigation() {
               ))}
             </Accordion>
             <Separator />
-            <div className='m-2 grid grid-cols-2 gap-2'>
-              <div className='border-foreground/20 flex aspect-square flex-col items-center justify-center gap-2 border'>
+            <div className='m-2 grid grid-cols-2 gap-2 text-xs'>
+              <div className='hover:text-background hover:bg-primary border-primary flex aspect-square flex-col items-center justify-center gap-2 border border-2'>
                 <User />
-                <div className='text-md uppercase'>Mon compte</div>
+                <div className='text-md font-bold uppercase'>Mon compte</div>
               </div>
-              <div className='border-foreground/20 flex aspect-square flex-col items-center justify-center gap-2 border'>
+              <div className='hover:text-background hover:bg-primary border-primary flex aspect-square flex-col items-center justify-center gap-2 border border-2'>
                 <MessageCircleQuestion />
-                <div className='text-md uppercase'>FAQ</div>
+                <div className='text-md font-bold uppercase'>FAQ</div>
               </div>
-              <div className='border-foreground/20 flex aspect-square flex-col items-center justify-center gap-2 border'>
+              <div className='hover:text-background hover:bg-primary border-primary flex aspect-square flex-col items-center justify-center gap-2 border border-2'>
                 <Mail />
-                <div className='text-md uppercase'>Nous écrire</div>
+                <div className='text-md font-bold uppercase'>Nous écrire</div>
               </div>
-              <div className='border-foreground/20 flex aspect-square flex-col items-center justify-center gap-2 border'>
+              <div className='hover:text-background hover:bg-primary border-primary flex aspect-square flex-col items-center justify-center gap-2 border border-2'>
                 <Truck />
-                <div className='text-md uppercase'>Suivi de commande</div>
+                <div className='text-md font-bold uppercase'>Suivi de commande</div>
               </div>
             </div>
           </SheetContent>
