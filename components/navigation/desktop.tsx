@@ -12,6 +12,7 @@ import { navigation } from '@/data/navigation'
 import { ChevronRight, ShoppingBag, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CollectionCard } from '../collection-card'
 import { SearchMenu } from '../search-menu'
 
 export function DesktopNavigation() {
@@ -29,7 +30,7 @@ export function DesktopNavigation() {
                   <Link href={link.href!}>{link.title}</Link>
                 </NavigationMenuTrigger>
                 {link.items && (
-                  <NavigationMenuContent className='bg-background min-w-screen px-10 py-8'>
+                  <NavigationMenuContent className='bg-background min-w-screen border-b px-10 py-8'>
                     <div className='flex flex-row justify-between'>
                       <div className='flex flex-row gap-20'>
                         {link.items.map((linkItem, indexLinkItem) => (
@@ -53,30 +54,24 @@ export function DesktopNavigation() {
                         ))}
                       </div>
                       <div className='flex flex-row gap-4'>
-                        <div className='relative h-[315px] w-[237px]'>
-                          <Image
-                            src='/homme-polos.webp'
-                            alt='homme-polos'
-                            width={237}
-                            height={315}
-                            className='h-full w-full object-cover'
-                          />
-                          <div className='absolute inset-0 flex items-center justify-center'>
-                            <span className='text-primary text-xl font-bold uppercase'>Polos</span>
-                          </div>
-                        </div>
-                        <div className='relative h-[315px] w-[237px]'>
-                          <Image
-                            src='/homme-new.webp'
-                            alt='homme-polos'
-                            width={237}
-                            height={315}
-                            className='h-full w-full object-cover'
-                          />
-                          <div className='absolute inset-0 flex items-center justify-center'>
-                            <span className='text-primary text-xl font-bold uppercase'>Nouveautés</span>
-                          </div>
-                        </div>
+                        <CollectionCard
+                          key='collection-homme-polos'
+                          collection={{
+                            name: 'Polos',
+                            textColor: 'primary',
+                            href: '/collections/homme-polos',
+                            imageUrl: '/collections/homme-polos.webp'
+                          }}
+                        />
+                        <CollectionCard
+                          key='collection-homme-new'
+                          collection={{
+                            name: 'Nouveautés',
+                            textColor: 'primary',
+                            href: '/collections/homme-new',
+                            imageUrl: '/collections/homme-new.webp'
+                          }}
+                        />
                       </div>
                     </div>
                   </NavigationMenuContent>

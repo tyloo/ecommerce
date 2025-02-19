@@ -1,4 +1,4 @@
-type Collection = {
+export type Collection = {
   name: string
   textColor: 'primary' | 'white'
   href: string
