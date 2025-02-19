@@ -1,10 +1,10 @@
+import { CollectionCard } from '@/components/collection-card'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { collections } from '@/data/collections'
 import { Search } from 'lucide-react'
 import Link from 'next/link'
-import { CollectionCard } from './collection-card'
-import { Input } from './ui/input'
 
 export function SearchMenu() {
   return (
@@ -14,7 +14,7 @@ export function SearchMenu() {
           <Search />
         </Button>
       </SheetTrigger>
-      <SheetContent side='top' className='flex flex-col px-4 py-2'>
+      <SheetContent side='top' className='flex max-h-screen flex-col overflow-y-auto px-4 py-2'>
         <SheetHeader className='p-0'>
           <SheetTitle className='hidden'>Search</SheetTitle>
           <SheetDescription className='hidden'>Search products</SheetDescription>
@@ -24,7 +24,7 @@ export function SearchMenu() {
             <Search className='text-muted-foreground absolute top-1/2 right-2 h-4 w-4 -translate-y-1/2' />
           </div>
         </SheetHeader>
-        <div className='my-4 flex h-full flex-col justify-between gap-4 overflow-auto md:flex-row'>
+        <div className='my-4 flex h-full flex-col justify-between gap-4 md:flex-row'>
           <div className='flex grow flex-col gap-4'>
             <div>
               <div className='mb-3 text-sm font-bold uppercase'>Suggestions</div>
@@ -59,7 +59,7 @@ export function SearchMenu() {
           </div>
           <div className='flex flex-col gap-4'>
             <div className='text-sm font-bold uppercase'>Collections</div>
-            <div className='mx-auto grid auto-rows-auto grid-cols-2 gap-4 sm:grid-cols-3'>
+            <div className='mx-auto grid auto-rows-auto grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
               {collections.map((collection) => (
                 <CollectionCard key={collection.href} collection={collection} />
               ))}
