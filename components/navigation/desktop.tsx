@@ -9,9 +9,10 @@ import {
   NavigationMenuTrigger
 } from '@/components/ui/navigation-menu'
 import { navigation } from '@/data/navigation'
-import { ChevronRight, Search, ShoppingBag, User } from 'lucide-react'
+import { ChevronRight, ShoppingBag, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { SearchMenu } from '../search-menu'
 
 export function DesktopNavigation() {
   return (
@@ -91,9 +92,7 @@ export function DesktopNavigation() {
         </Link>
       </div>
       <div className='hidden flex-1 items-center justify-end rounded-lg sm:flex'>
-        <Button variant='ghost' size='icon'>
-          <Search />
-        </Button>
+        <SearchMenu />
         <Button variant='ghost' size='icon'>
           <User />
         </Button>
