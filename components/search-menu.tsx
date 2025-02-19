@@ -14,7 +14,7 @@ export function SearchMenu() {
           <Search />
         </Button>
       </SheetTrigger>
-      <SheetContent side='top' className='px-4 py-2'>
+      <SheetContent side='top' className='flex flex-col px-4 py-2'>
         <SheetHeader className='p-0'>
           <SheetTitle className='hidden'>Search</SheetTitle>
           <SheetDescription className='hidden'>Search products</SheetDescription>
@@ -24,8 +24,8 @@ export function SearchMenu() {
             <Search className='text-muted-foreground absolute top-1/2 right-2 h-4 w-4 -translate-y-1/2' />
           </div>
         </SheetHeader>
-        <div className='my-4 flex flex-row justify-between gap-4'>
-          <div className='flex grow flex-col gap-8'>
+        <div className='my-4 flex h-full flex-col justify-between gap-4 overflow-auto md:flex-row'>
+          <div className='flex grow flex-col gap-4'>
             <div>
               <div className='mb-3 text-sm font-bold uppercase'>Suggestions</div>
               <ul>
@@ -59,7 +59,7 @@ export function SearchMenu() {
           </div>
           <div className='flex flex-col gap-4'>
             <div className='text-sm font-bold uppercase'>Collections</div>
-            <div className='grid grid-cols-4 space-y-2 space-x-4'>
+            <div className='mx-auto grid auto-rows-auto grid-cols-2 gap-4 sm:grid-cols-3'>
               {collections.map((collection) => (
                 <CollectionCard key={collection.href} collection={collection} />
               ))}

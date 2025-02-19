@@ -3,9 +3,10 @@ import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { navigation } from '@/data/navigation'
-import { Mail, Menu, MessageCircleQuestion, Search, ShoppingBag, Truck, User } from 'lucide-react'
+import { Mail, Menu, MessageCircleQuestion, ShoppingBag, Truck, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { SearchMenu } from '../search-menu'
 
 export function MobileNavigation() {
   return (
@@ -78,9 +79,7 @@ export function MobileNavigation() {
         <Image src='/logo.svg' alt='logo' width={114} height={30} />
       </div>
       <div className='flex flex-1 items-center justify-end rounded-lg'>
-        <Button variant='ghost' size='icon'>
-          <Search />
-        </Button>
+        <SearchMenu />
         <Button variant='ghost' size='icon'>
           <User />
         </Button>
