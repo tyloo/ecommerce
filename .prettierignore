@@ -7,9 +7,5 @@
 !*.tsx
 !*.mjs
 
-# Ignore shadcn components and db migrations
-components/ui/*
-lib/db/migrations/**/*
-
 # Check subdirectories too
 !*/
