@@ -28,7 +28,7 @@ export function HomeGrid() {
         <div className='grid grid-cols-2 gap-6'>
           <div className='flex flex-col items-center justify-start gap-4 text-center'>
             <Image src='/icons/icon-laptop.svg' alt='Laptop icon' width={48} height={48} />
-            <span>Obtenez rapidement l'estimation de votre pièce en répondant à quelques questions</span>
+            <span>Obtenez rapidement l&apos;estimation de votre pièce en répondant à quelques questions</span>
           </div>
           <div className='flex flex-col items-center justify-start gap-4 text-center'>
             <Image
@@ -46,7 +46,7 @@ export function HomeGrid() {
           </div>
           <div className='flex flex-col items-center justify-start gap-4 text-center'>
             <Image src='/icons/icon-giftcard.svg' alt='Giftcard icon' width={48} height={48} />
-            <span>Profitez d'un bon d'achat sur Lacoste seconde main ou chez Lacoste</span>
+            <span>Profitez d&apos;un bon d&apos;achat sur Lacoste seconde main ou chez Lacoste</span>
           </div>
         </div>
         <div>
@@ -103,7 +103,7 @@ export function HomeGrid() {
               height={48}
               className='aspect-square object-contain'
             />
-            <span>Livraison gratuite à partir de 150€ d'achat</span>
+            <span>Livraison gratuite à partir de 150€ d&apos;achat</span>
           </div>
           <div className='flex flex-col items-center justify-start gap-4 text-center'>
             <Image
