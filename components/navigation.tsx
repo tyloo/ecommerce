@@ -122,7 +122,7 @@ function DesktopNavigation() {
 
 function MobileNavigation() {
   return (
-    <div className='flex lg:hidden'>
+    <div className='flex px-6 py-3 lg:hidden'>
       <div className='justify-star flex flex-1 items-center gap-4 text-sm'>
         <Sheet>
           <SheetTrigger asChild>

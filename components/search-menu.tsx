@@ -25,7 +25,7 @@ export function SearchMenu() {
           </div>
         </SheetHeader>
         <div className='my-4 flex h-full flex-col justify-between gap-4 md:flex-row'>
-          <div className='flex grow flex-col gap-4'>
+          <div className='flex grow flex-row justify-between gap-4 lg:flex-col lg:justify-start'>
             <div>
               <div className='mb-3 text-sm font-bold uppercase'>Suggestions</div>
               <ul>
