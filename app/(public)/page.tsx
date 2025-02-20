@@ -3,7 +3,7 @@ import { Hero } from '@/components/hero'
 import { HomeGrid } from '@/components/home-grid'
 import { ProductCarousel } from '@/components/product-carousel'
 import { Separator } from '@/components/ui/separator'
-import { products } from '@/data/products'
+import { menProducts, womenProducts } from '@/data/products'
 
 export default async function Home() {
   return (
@@ -22,13 +22,17 @@ export default async function Home() {
         cta={{ text: 'Découvrir la démarche de Lacoste Seconde main', href: '#' }}
       />
       <Separator />
-      <ProductCarousel title='Collections' products={products} />
+      <ProductCarousel
+        title='Les nouveautés de la semaine'
+        products={{ homme: menProducts, femme: womenProducts }}
+        callToAction={{ label: 'Découvrir', href: '#' }}
+      />
       <Separator />
-      <ProductCarousel title='Collections' products={products} />
+      <ProductCarousel title='Les sélections par taille' products={{ homme: menProducts, femme: womenProducts }} />
       <Separator />
       <HomeGrid />
       <Separator />
-      <ProductCarousel title='Collections' products={products} />
+      <ProductCarousel title='Toutes les catégories' products={{ homme: menProducts, femme: womenProducts }} />
     </main>
   )
 }

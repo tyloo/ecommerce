@@ -13,7 +13,7 @@ type ConceptProps = {
 
 export function Concept({ title, subtitle, cta }: ConceptProps) {
   return (
-    <div className='relative flex flex-col items-center justify-center'>
+    <div className='relative my-8 flex flex-col items-center justify-center'>
       <div className='absolute inset-0' />
       <div className='relative z-9 container max-w-4xl text-center'>
         <h1 className='text-primary mb-6 text-4xl font-bold uppercase'>{title}</h1>
