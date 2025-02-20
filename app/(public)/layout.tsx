@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <div className='flex flex-col'>
       <Navigation />
-      <div className='grid grid-flow-col overflow-auto'>{children}</div>
+      {children}
       <Footer />
     </div>
   )

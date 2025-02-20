@@ -1,5 +1,6 @@
 'use client'
 
+import { CartMenu } from '@/components/cart-menu'
 import { CollectionCard } from '@/components/collection-card'
 import { SearchMenu } from '@/components/search-menu'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
@@ -17,7 +18,6 @@ import { navigation } from '@/data/navigation'
 import { ChevronRight, Mail, Menu, MessageCircleQuestion, Truck, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { CartMenu } from './cart-menu'
 
 export function Navigation() {
   return (

@@ -1,6 +1,11 @@
 'use client'
 
+import { CollectionCard } from '@/components/collection-card'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Progress } from '@/components/ui/progress'
 import {
   Sheet,
   SheetContent,
@@ -13,11 +18,6 @@ import {
 import { collections } from '@/data/collections'
 import { ShoppingBag, Trash } from 'lucide-react'
 import Image from 'next/image'
-import { CollectionCard } from './collection-card'
-import { Badge } from './ui/badge'
-import { Input } from './ui/input'
-import { Label } from './ui/label'
-import { Progress } from './ui/progress'
 
 export function CartMenu() {
   return (
