@@ -15,9 +15,11 @@ import {
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { navigation } from '@/data/navigation'
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
 import { ChevronRight, Mail, Menu, MessageCircleQuestion, Truck, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Suspense } from 'react'
 
 export function Navigation() {
   return (
@@ -110,10 +112,21 @@ function DesktopNavigation() {
         </div>
         <div className='hidden flex-1 items-center justify-end rounded-lg sm:flex'>
           <SearchMenu />
-          <Button variant='ghost' size='icon'>
-            <User />
-          </Button>
           <CartMenu />
+          <Suspense>
+            <SignedOut>
+              <SignInButton>
+                <Button variant='ghost' size='icon'>
+                  <User />
+                </Button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <div className='flex size-9 items-center justify-center'>
+                <UserButton />
+              </div>
+            </SignedIn>
+          </Suspense>
         </div>
       </div>
     </div>
@@ -190,10 +203,19 @@ function MobileNavigation() {
       </div>
       <div className='flex flex-1 items-center justify-end rounded-lg'>
         <SearchMenu />
-        <Button variant='ghost' size='icon'>
-          <User />
-        </Button>
         <CartMenu />
+        <Suspense>
+          <SignedOut>
+            <SignInButton>
+              <Button variant='ghost' size='icon'>
+                <User />
+              </Button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </Suspense>
       </div>
     </div>
   )

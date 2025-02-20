@@ -1,9 +1,8 @@
 'use client'
 
-import { SidebarProvider } from '@/contexts/sidebar-context'
+import { ClerkProvider } from '@clerk/nextjs'
 import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { HTTPException } from 'hono/http-exception'
-import { ThemeProvider } from 'next-themes'
 import { PropsWithChildren, useState } from 'react'
 
 export const Providers = ({ children }: PropsWithChildren) => {
@@ -21,10 +20,8 @@ export const Providers = ({ children }: PropsWithChildren) => {
   )
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider enableSystem attribute='class' defaultTheme='system' disableTransitionOnChange>
-        <SidebarProvider>{children}</SidebarProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <ClerkProvider>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </ClerkProvider>
   )
 }
