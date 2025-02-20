@@ -19,7 +19,7 @@ export function SearchMenu() {
           <SheetTitle className='hidden'>Search</SheetTitle>
           <SheetDescription className='hidden'>Search products</SheetDescription>
 
-          <div className='relative mr-9'>
+          <div className='relative'>
             <Input size={2} placeholder='Rechercher des produits...' className='h-10 py-2 pr-8' />
             <Search className='text-muted-foreground absolute top-1/2 right-2 h-4 w-4 -translate-y-1/2' />
           </div>

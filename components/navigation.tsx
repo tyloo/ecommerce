@@ -22,13 +22,7 @@ import Link from 'next/link'
 export function Navigation() {
   return (
     <>
-      <div className='sticky top-0 z-10 flex items-center justify-center p-3 text-xs uppercase'>
-        Retour vers
-        <Link href='/' className='ml-1 underline hover:no-underline'>
-          lacoste.com
-        </Link>
-      </div>
-      <div className='bg-primary text-background sticky top-0 z-10 px-6 py-3'>
+      <div className='bg-primary text-background sticky top-0 z-10'>
         <DesktopNavigation />
         <MobileNavigation />
       </div>
@@ -38,81 +32,89 @@ export function Navigation() {
 
 function DesktopNavigation() {
   return (
-    <div className='hidden lg:flex'>
-      <div className='justify-star flex flex-1 items-center gap-8'>
-        <Link href='/'>
-          <Image src='/croco.svg' alt='croco' width={26} height={20} />
-        </Link>
-        <NavigationMenu>
-          <NavigationMenuList>
-            {navigation.map((link, index) => (
-              <NavigationMenuItem key={`desktop-menu-${index}`}>
-                <NavigationMenuTrigger>
-                  <Link href={link.href!}>{link.title}</Link>
-                </NavigationMenuTrigger>
-                {link.items && (
-                  <NavigationMenuContent className='bg-background min-w-screen border-b px-10 py-8'>
-                    <div className='flex flex-row justify-between'>
-                      <div className='flex flex-row gap-20'>
-                        {link.items.map((linkItem, indexLinkItem) => (
-                          <div className='flex flex-col' key={`desktop-menu-item-${indexLinkItem}`}>
-                            <div className='text-md mb-4 font-bold uppercase'>{linkItem.title}</div>
-                            {linkItem.items?.map((subLinkItem, indexSubLinkItem) => (
-                              <Link
-                                key={`desktop-menu-subitem-${indexSubLinkItem}`}
-                                href={subLinkItem.href!}
-                                className='mb-1.5 text-sm hover:underline'
-                              >
-                                {subLinkItem.title}
-                              </Link>
-                            ))}
-                            {typeof linkItem.href !== 'undefined' && (
-                              <Link href={link.href!} className='mt-4 flex items-center text-sm hover:underline'>
-                                Voir tout <ChevronRight />
-                              </Link>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                      <div className='flex flex-row gap-4'>
-                        <CollectionCard
-                          key='collection-homme-polos'
-                          collection={{
-                            name: 'Polos',
-                            textColor: 'primary',
-                            href: '/collections/homme-polos',
-                            imageUrl: '/collections/homme-polos.webp'
-                          }}
-                        />
-                        <CollectionCard
-                          key='collection-homme-new'
-                          collection={{
-                            name: 'Nouveautés',
-                            textColor: 'primary',
-                            href: '/collections/homme-new',
-                            imageUrl: '/collections/homme-new.webp'
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </NavigationMenuContent>
-                )}
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
-      </div>
-      <div className='flex shrink-0 items-center justify-center rounded-lg'>
-        <Link href='/'>
-          <Image src='/logo.svg' alt='logo' width={114} height={30} />
+    <div>
+      <div className='bg-background text-primary flex items-center justify-center p-3 text-xs uppercase'>
+        Retour vers
+        <Link href='/' className='ml-1 underline hover:no-underline'>
+          lacoste.com
         </Link>
       </div>
-      <div className='hidden flex-1 items-center justify-end rounded-lg sm:flex'>
-        <SearchMenu />
-        <Button variant='ghost' size='icon'>
-          <User />
-        </Button>
-        <CartMenu />
+      <div className='hidden px-6 py-3 lg:flex'>
+        <div className='justify-star flex flex-1 items-center gap-8'>
+          <Link href='/'>
+            <Image src='/croco.svg' alt='croco' width={26} height={20} />
+          </Link>
+          <NavigationMenu>
+            <NavigationMenuList>
+              {navigation.map((link, index) => (
+                <NavigationMenuItem key={`desktop-menu-${index}`}>
+                  <NavigationMenuTrigger>
+                    <Link href={link.href!}>{link.title}</Link>
+                  </NavigationMenuTrigger>
+                  {link.items && (
+                    <NavigationMenuContent className='bg-background min-w-screen border-b px-10 py-8'>
+                      <div className='flex flex-row justify-between'>
+                        <div className='flex flex-row gap-20'>
+                          {link.items.map((linkItem, indexLinkItem) => (
+                            <div className='flex flex-col' key={`desktop-menu-item-${indexLinkItem}`}>
+                              <div className='text-md mb-4 font-bold uppercase'>{linkItem.title}</div>
+                              {linkItem.items?.map((subLinkItem, indexSubLinkItem) => (
+                                <Link
+                                  key={`desktop-menu-subitem-${indexSubLinkItem}`}
+                                  href={subLinkItem.href!}
+                                  className='mb-1.5 text-sm hover:underline'
+                                >
+                                  {subLinkItem.title}
+                                </Link>
+                              ))}
+                              {typeof linkItem.href !== 'undefined' && (
+                                <Link href={link.href!} className='mt-4 flex items-center text-sm hover:underline'>
+                                  Voir tout <ChevronRight />
+                                </Link>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                        <div className='flex flex-row gap-4'>
+                          <CollectionCard
+                            key='collection-homme-polos'
+                            collection={{
+                              name: 'Polos',
+                              textColor: 'primary',
+                              href: '/collections/homme-polos',
+                              imageUrl: '/collections/homme-polos.webp'
+                            }}
+                          />
+                          <CollectionCard
+                            key='collection-homme-new'
+                            collection={{
+                              name: 'Nouveautés',
+                              textColor: 'primary',
+                              href: '/collections/homme-new',
+                              imageUrl: '/collections/homme-new.webp'
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </NavigationMenuContent>
+                  )}
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
+        <div className='flex shrink-0 items-center justify-center rounded-lg'>
+          <Link href='/'>
+            <Image src='/logo.svg' alt='logo' width={114} height={30} />
+          </Link>
+        </div>
+        <div className='hidden flex-1 items-center justify-end rounded-lg sm:flex'>
+          <SearchMenu />
+          <Button variant='ghost' size='icon'>
+            <User />
+          </Button>
+          <CartMenu />
+        </div>
       </div>
     </div>
   )
