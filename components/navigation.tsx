@@ -22,13 +22,13 @@ import { CartMenu } from './cart-menu'
 export function Navigation() {
   return (
     <>
-      <div className='flex items-center justify-center p-3 text-xs uppercase'>
+      <div className='sticky top-0 z-10 flex items-center justify-center p-3 text-xs uppercase'>
         Retour vers
         <Link href='/' className='ml-1 underline hover:no-underline'>
           lacoste.com
         </Link>
       </div>
-      <div className='bg-primary text-background sticky top-0 px-6 py-3'>
+      <div className='bg-primary text-background sticky top-0 z-10 px-6 py-3'>
         <DesktopNavigation />
         <MobileNavigation />
       </div>

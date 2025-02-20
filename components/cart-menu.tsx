@@ -106,7 +106,7 @@ export function CartMenu() {
         <SheetFooter className='sticky bottom-0 z-10'>
           <div className='grid w-full items-center gap-1.5'>
             <Label htmlFor='picture'>Code promo</Label>
-            <Input id='picture' className='rounded-none' />
+            <Input id='picture' />
           </div>
           <ul className='mb-2 text-sm/10'>
             <li className='flex flex-row items-start justify-between'>
