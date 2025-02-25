@@ -4,7 +4,7 @@ export type Product = {
   price: number
   originalPrice?: number
   discount?: number
-  imageUrl: string
+  images: string[]
   href: string
 }
 
@@ -15,7 +15,7 @@ export const womenProducts: Product[] = [
     price: 54,
     originalPrice: 100,
     discount: 20,
-    imageUrl: '/collections/femme-polos.webp',
+    images: ['/collections/femme-polos.webp', '/collections/femme-manteaux-et-vestes.webp'],
     href: '#'
   },
   {
@@ -24,7 +24,7 @@ export const womenProducts: Product[] = [
     price: 62,
     originalPrice: 80,
     discount: 30,
-    imageUrl: '/collections/femme-manteaux-et-vestes.webp',
+    images: ['/collections/femme-manteaux-et-vestes.webp', '/collections/femme-polos.webp'],
     href: '#'
   },
   {
@@ -33,7 +33,7 @@ export const womenProducts: Product[] = [
     price: 54,
     originalPrice: 100,
     discount: 20,
-    imageUrl: '/collections/femme-polos.webp',
+    images: ['/collections/femme-polos.webp', '/collections/femme-manteaux-et-vestes.webp'],
     href: '#'
   },
   {
@@ -42,7 +42,7 @@ export const womenProducts: Product[] = [
     price: 62,
     originalPrice: 80,
     discount: 30,
-    imageUrl: '/collections/femme-manteaux-et-vestes.webp',
+    images: ['/collections/femme-manteaux-et-vestes.webp', '/collections/femme-polos.webp'],
     href: '#'
   },
   {
@@ -51,7 +51,7 @@ export const womenProducts: Product[] = [
     price: 54,
     originalPrice: 100,
     discount: 20,
-    imageUrl: '/collections/femme-polos.webp',
+    images: ['/collections/femme-polos.webp', '/collections/femme-manteaux-et-vestes.webp'],
     href: '#'
   },
   {
@@ -60,7 +60,7 @@ export const womenProducts: Product[] = [
     price: 62,
     originalPrice: 80,
     discount: 30,
-    imageUrl: '/collections/femme-manteaux-et-vestes.webp',
+    images: ['/collections/femme-manteaux-et-vestes.webp', '/collections/femme-polos.webp'],
     href: '#'
   },
   {
@@ -69,7 +69,7 @@ export const womenProducts: Product[] = [
     price: 54,
     originalPrice: 100,
     discount: 20,
-    imageUrl: '/collections/femme-polos.webp',
+    images: ['/collections/femme-polos.webp', '/collections/femme-manteaux-et-vestes.webp'],
     href: '#'
   },
   {
@@ -78,7 +78,7 @@ export const womenProducts: Product[] = [
     price: 62,
     originalPrice: 80,
     discount: 30,
-    imageUrl: '/collections/femme-manteaux-et-vestes.webp',
+    images: ['/collections/femme-manteaux-et-vestes.webp', '/collections/femme-polos.webp'],
     href: '#'
   },
   {
@@ -87,7 +87,7 @@ export const womenProducts: Product[] = [
     price: 54,
     originalPrice: 100,
     discount: 20,
-    imageUrl: '/collections/femme-polos.webp',
+    images: ['/collections/femme-polos.webp', '/collections/femme-manteaux-et-vestes.webp'],
     href: '#'
   },
   {
@@ -96,7 +96,7 @@ export const womenProducts: Product[] = [
     price: 62,
     originalPrice: 80,
     discount: 30,
-    imageUrl: '/collections/femme-manteaux-et-vestes.webp',
+    images: ['/collections/femme-manteaux-et-vestes.webp', '/collections/femme-polos.webp'],
     href: '#'
   }
 ]
@@ -108,7 +108,7 @@ export const menProducts: Product[] = [
     price: 54,
     originalPrice: 100,
     discount: 20,
-    imageUrl: '/collections/homme-polos.webp',
+    images: ['/collections/homme-polos.webp', '/collections/homme-sweatshirts.webp'],
     href: '#'
   },
   {
@@ -117,7 +117,7 @@ export const menProducts: Product[] = [
     price: 62,
     originalPrice: 80,
     discount: 30,
-    imageUrl: '/collections/homme-sweatshirts.webp',
+    images: ['/collections/homme-sweatshirts.webp', '/collections/homme-polos.webp'],
     href: '#'
   },
   {
@@ -126,7 +126,7 @@ export const menProducts: Product[] = [
     price: 54,
     originalPrice: 100,
     discount: 20,
-    imageUrl: '/collections/homme-polos.webp',
+    images: ['/collections/homme-polos.webp', '/collections/homme-sweatshirts.webp'],
     href: '#'
   },
   {
@@ -135,7 +135,7 @@ export const menProducts: Product[] = [
     price: 62,
     originalPrice: 80,
     discount: 30,
-    imageUrl: '/collections/homme-sweatshirts.webp',
+    images: ['/collections/homme-sweatshirts.webp', '/collections/homme-polos.webp'],
     href: '#'
   },
   {
@@ -144,7 +144,7 @@ export const menProducts: Product[] = [
     price: 54,
     originalPrice: 100,
     discount: 20,
-    imageUrl: '/collections/homme-polos.webp',
+    images: ['/collections/homme-polos.webp', '/collections/homme-sweatshirts.webp'],
     href: '#'
   },
   {
@@ -153,7 +153,7 @@ export const menProducts: Product[] = [
     price: 62,
     originalPrice: 80,
     discount: 30,
-    imageUrl: '/collections/homme-sweatshirts.webp',
+    images: ['/collections/homme-sweatshirts.webp', '/collections/homme-polos.webp'],
     href: '#'
   },
   {
@@ -162,7 +162,7 @@ export const menProducts: Product[] = [
     price: 54,
     originalPrice: 100,
     discount: 20,
-    imageUrl: '/collections/homme-polos.webp',
+    images: ['/collections/homme-polos.webp', '/collections/homme-sweatshirts.webp'],
     href: '#'
   },
   {
@@ -171,7 +171,7 @@ export const menProducts: Product[] = [
     price: 62,
     originalPrice: 80,
     discount: 30,
-    imageUrl: '/collections/homme-sweatshirts.webp',
+    images: ['/collections/homme-sweatshirts.webp', '/collections/homme-polos.webp'],
     href: '#'
   },
   {
@@ -180,7 +180,7 @@ export const menProducts: Product[] = [
     price: 54,
     originalPrice: 100,
     discount: 20,
-    imageUrl: '/collections/homme-polos.webp',
+    images: ['/collections/homme-polos.webp', '/collections/homme-sweatshirts.webp'],
     href: '#'
   },
   {
@@ -189,7 +189,7 @@ export const menProducts: Product[] = [
     price: 62,
     originalPrice: 80,
     discount: 30,
-    imageUrl: '/collections/homme-sweatshirts.webp',
+    images: ['/collections/homme-sweatshirts.webp', '/collections/homme-polos.webp'],
     href: '#'
   }
 ]

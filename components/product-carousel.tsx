@@ -1,12 +1,11 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import type { Product } from '@/data/products'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import { ProductCard } from './product-card'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel'
 
 type ProductCarouselProps = {
@@ -40,31 +39,7 @@ export function ProductCarousel({ title, products, callToAction }: ProductCarous
         <CarouselContent>
           {products[activeTab as keyof typeof products].map((product, index) => (
             <CarouselItem key={index} className='basis-1/4'>
-              <Card
-                key={product.id}
-                className='border-background hover:border-primary min-w-[237px] flex-none snap-start rounded-none border-2 shadow-none'
-              >
-                <Link href={product.href}>
-                  <div className='relative aspect-square overflow-hidden'>
-                    <Image
-                      src={product.imageUrl}
-                      alt={product.name}
-                      fill
-                      className='object-cover transition-transform hover:scale-105'
-                    />
-                  </div>
-                  <div className='p-4'>
-                    <h3 className='font-medium'>{product.name}</h3>
-                    <div className='mt-2 flex items-center gap-2'>
-                      <span className='font-bold'>{product.price.toFixed(2)} €</span>
-                      {product.originalPrice && (
-                        <span className='text-muted-foreground line-through'>{product.originalPrice.toFixed(2)} €</span>
-                      )}
-                      {product.discount && <span className='text-primary text-sm font-bold'>-{product.discount}%</span>}
-                    </div>
-                  </div>
-                </Link>
-              </Card>
+              <ProductCard product={product} />
             </CarouselItem>
           ))}
         </CarouselContent>
