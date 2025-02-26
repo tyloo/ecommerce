@@ -1,13 +1,13 @@
+import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/ui/card'
 import { Product } from '@/data/products'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Badge } from './ui/badge'
-import { Card } from './ui/card'
 
 export function ProductCard({ product }: { product: Product }) {
   return (
     <Card key={product.id} className='group min-w-[237px] flex-none snap-start rounded-none border-none shadow-none'>
-      <Link href={`/products/${product.gender}/${product.id}`}>
+      <Link href={`/products/${product.id}`}>
         <div className='relative aspect-square overflow-hidden group-hover:hidden'>
           <Image
             src={product.images[0]}

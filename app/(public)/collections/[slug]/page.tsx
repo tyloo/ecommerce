@@ -111,13 +111,12 @@ function PaginationControls({
   )
 }
 
-export default async function CollectionPage({
-  params,
-  searchParams
-}: {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
+export default async function CollectionPage(props: {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
+  const params = await props.params
+  const searchParams = await props.searchParams
   const collection = collections[params.slug]
 
   if (!collection) {

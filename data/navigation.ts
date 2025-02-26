@@ -1,4 +1,4 @@
-import { collections } from './collections'
+import { collections } from '@/data/collections'
 
 type NavigationItem = {
   title: string

@@ -1,12 +1,12 @@
 'use client'
 
+import { ProductCard } from '@/components/product-card'
 import { Button } from '@/components/ui/button'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import type { Product } from '@/data/products'
 import Link from 'next/link'
 import { useState } from 'react'
-import { ProductCard } from './product-card'
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel'
 
 type ProductCarouselProps = {
   title: string
