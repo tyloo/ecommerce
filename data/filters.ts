@@ -2,14 +2,16 @@ export const filters = {
   type: '',
   condition: '',
   size: '',
-  color: ''
+  color: '',
+  sort: ''
 }
 
 export const filterOptions = {
   type: 'Type',
   condition: 'État',
   size: 'Taille',
-  color: 'Couleur'
+  color: 'Couleur',
+  sort: 'Trier par'
 }
 
 export const types: Record<string, string> = {

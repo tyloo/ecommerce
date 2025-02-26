@@ -4,7 +4,6 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { colors, conditions, filterOptions, sizes, sorts, types } from '@/data/filters'
 import { cn } from '@/lib/utils'
 import { Check, ChevronsUpDown, X } from 'lucide-react'
@@ -14,12 +13,12 @@ import { useEffect, useState } from 'react'
 export function Filters() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const [sort, setSort] = useState(searchParams.get('sort') || '')
   const [filters, setFilters] = useState<Record<string, string>>({
     type: searchParams.get('type') || '',
     condition: searchParams.get('condition') || '',
     size: searchParams.get('size') || '',
-    color: searchParams.get('color') || ''
+    color: searchParams.get('color') || '',
+    sort: searchParams.get('sort') || ''
   })
 
   useEffect(() => {
@@ -34,16 +33,9 @@ export function Filters() {
       }
     })
 
-    // Update sort param
-    if (sort) {
-      params.set('sort', sort)
-    } else {
-      params.delete('sort')
-    }
-
     // Update URL without causing a page reload
     router.push(`?${params.toString()}`, { scroll: false })
-  }, [filters, sort, router, searchParams])
+  }, [filters, router, searchParams])
 
   return (
     <div className='flex flex-col gap-4'>
@@ -75,7 +67,12 @@ export function Filters() {
           />
         </div>
         <div>
-          <Sort value={sort} onValueChange={setSort} />
+          <Filter
+            label={filterOptions.sort}
+            value={filters.sort}
+            availableValues={sorts}
+            onValueChange={(value) => setFilters((prev) => ({ ...prev, sort: value }))}
+          />
         </div>
       </div>
       <div className='flex flex-row items-center justify-between gap-2'>
@@ -109,7 +106,15 @@ export function Filters() {
             />
           )}
         </div>
-        <div>{sorts[sort] && <ActiveFilter label={sorts[sort]} onRemoveFilter={() => setSort('')} />}</div>
+        <div>
+          {filters.sort && (
+            <ActiveFilter
+              filter='sort'
+              label={sorts[filters.sort]}
+              onRemoveFilter={() => setFilters((prev) => ({ ...prev, sort: '' }))}
+            />
+          )}
+        </div>
       </div>
     </div>
   )
@@ -163,42 +168,23 @@ function Filter({
   )
 }
 
-function Sort({ value, onValueChange }: { value: string; onValueChange: (value: string) => void }) {
-  return (
-    <Select onValueChange={onValueChange} defaultValue={value}>
-      <SelectTrigger className='w-[140px] rounded-none'>
-        <SelectValue placeholder='Filtrer par' />
-      </SelectTrigger>
-      <SelectContent className='rounded-none'>
-        <SelectGroup>
-          {Object.entries(sorts).map(([value, label]) => (
-            <SelectItem value={value} key={value}>
-              {label}
-            </SelectItem>
-          ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  )
-}
-
 function ActiveFilter({
   filter,
   label,
   onRemoveFilter
 }: {
-  filter?: keyof typeof filterOptions
+  filter: keyof typeof filterOptions
   label: string
   onRemoveFilter: (value: string) => void
 }) {
   return (
     <Badge className='gap-1 px-0.5 shadow-none'>
-      <div className='p-1 text-xs'>{filter ? filterOptions[filter] : 'Sort'}</div>
+      <div className='p-1 text-xs'>{filterOptions[filter]}</div>
       <div className='bg-background text-foreground rounded-md p-1 text-xs'>{label}</div>
       <Button
         size='icon'
         variant='link'
-        onClick={() => (filter ? onRemoveFilter(filter) : onRemoveFilter('sort'))}
+        onClick={() => onRemoveFilter(filter)}
         className='mx-1 size-4 cursor-pointer text-white'
       >
         <X className='text-xs' />
