@@ -23,6 +23,12 @@ type ProductCarouselProps = {
 export function ProductCarousel({ title, products, callToAction }: ProductCarouselProps) {
   const [activeTab, setActiveTab] = useState('homme')
 
+  // Limit products to 10 for each gender
+  const limitedProducts = {
+    homme: products.homme.slice(0, 10),
+    femme: products.femme.slice(0, 10)
+  }
+
   return (
     <div className='container my-4 space-y-4'>
       <div className='mx-4 flex items-center justify-between'>
@@ -37,7 +43,7 @@ export function ProductCarousel({ title, products, callToAction }: ProductCarous
 
       <Carousel className='mx-4 w-[calc(w-full-4rem)]'>
         <CarouselContent>
-          {products[activeTab as keyof typeof products].map((product, index) => (
+          {limitedProducts[activeTab as keyof typeof products].map((product, index) => (
             <CarouselItem key={index} className='basis-1/4'>
               <ProductCard product={product} />
             </CarouselItem>

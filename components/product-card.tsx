@@ -7,7 +7,7 @@ import { Card } from './ui/card'
 export function ProductCard({ product }: { product: Product }) {
   return (
     <Card key={product.id} className='group min-w-[237px] flex-none snap-start rounded-none border-none shadow-none'>
-      <Link href={product.href}>
+      <Link href={`/products/${product.gender}/${product.id}`}>
         <div className='relative aspect-square overflow-hidden group-hover:hidden'>
           <Image
             src={product.images[0]}

@@ -2,9 +2,12 @@ import { Concept } from '@/components/concept'
 import { Hero } from '@/components/hero'
 import { HomeGrid } from '@/components/home-grid'
 import { ProductCarousel } from '@/components/product-carousel'
-import { menProducts, womenProducts } from '@/data/products'
+import { products } from '@/data/products'
 
 export default async function Home() {
+  const menProducts = products.filter((product) => product.gender === 'homme')
+  const womenProducts = products.filter((product) => product.gender === 'femme')
+
   return (
     <main>
       <Hero
