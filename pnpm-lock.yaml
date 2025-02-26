@@ -132,7 +132,7 @@ importers:
         specifier: ^0.476.0
         version: 0.476.0(react@19.0.0)
       next:
-        specifier: ^15.2.0-canary.1
+        specifier: ^15.2.0-canary.76
         version: 15.2.0-canary.76(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-themes:
         specifier: ^0.4.4
