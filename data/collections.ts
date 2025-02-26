@@ -6,6 +6,12 @@ export type Collection = {
 }
 
 export const collections: Record<string, Collection> = {
+  homme: {
+    name: 'Homme',
+    textColor: 'primary',
+    href: '/collections/homme',
+    imageUrl: '/collections/homme-new.webp'
+  },
   'homme-nouveautes': {
     name: 'Nouveautés',
     textColor: 'primary',
@@ -101,6 +107,12 @@ export const collections: Record<string, Collection> = {
     textColor: 'primary',
     href: '/collections/homme-2xl-et-plus',
     imageUrl: '/collections/homme-2xl-et-plus.webp'
+  },
+  femme: {
+    name: 'Femme',
+    textColor: 'primary',
+    href: '/collections/femme',
+    imageUrl: '/collections/femme-new.webp'
   },
   'femme-nouveautes': {
     name: 'Nouveautés',

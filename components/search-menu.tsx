@@ -5,10 +5,12 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { collections } from '@/data/collections'
 import { Search } from 'lucide-react'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export function SearchMenu() {
+  const [open, setOpen] = useState(false)
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button variant='ghost' size='icon'>
           <Search />
@@ -61,7 +63,7 @@ export function SearchMenu() {
             <div className='text-sm font-bold uppercase'>Collections</div>
             <div className='mx-auto grid auto-rows-auto grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
               {Object.values(collections).map((collection) => (
-                <CollectionCard key={collection.href} collection={collection} />
+                <CollectionCard key={collection.href} collection={collection} onClick={() => setOpen(false)} />
               ))}
             </div>
           </div>

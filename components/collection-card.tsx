@@ -2,9 +2,9 @@ import type { Collection } from '@/data/collections'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export function CollectionCard({ collection }: { collection: Collection }) {
+export function CollectionCard({ collection, onClick }: { collection: Collection; onClick?: () => void }) {
   return (
-    <Link key={collection.href} href={collection.href} className='h-full w-full'>
+    <Link key={collection.href} href={collection.href} className='h-full w-full' onClick={onClick}>
       <div className='hover:border-primary group relative aspect-[237/315] w-full max-w-[237px] border-2 border-transparent'>
         <Image
           src={collection.imageUrl}
