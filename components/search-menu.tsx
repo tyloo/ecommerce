@@ -60,7 +60,7 @@ export function SearchMenu() {
           <div className='flex flex-col gap-4'>
             <div className='text-sm font-bold uppercase'>Collections</div>
             <div className='mx-auto grid auto-rows-auto grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
-              {collections.map((collection) => (
+              {Object.values(collections).map((collection) => (
                 <CollectionCard key={collection.href} collection={collection} />
               ))}
             </div>

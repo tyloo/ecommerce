@@ -6,6 +6,7 @@ export type Product = {
   discount?: number
   images: string[]
   href: string
+  description?: string
 }
 
 export const womenProducts: Product[] = [
