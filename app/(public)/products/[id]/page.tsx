@@ -1,3 +1,5 @@
+'use client'
+
 import { ProductCarousel } from '@/components/product-carousel'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -12,19 +14,102 @@ import { Button } from '@/components/ui/button'
 import { products } from '@/data/products'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import { useEffect, useRef, useState } from 'react'
 
-export default async function ProductPage(props: { params: Promise<{ id: string }> }) {
-  const params = await props.params
-  const product = products.find((p) => p.id === params.id)
+function ImageZoom({ src, alt }: { src: string; alt: string }) {
+  const [isZoomed, setIsZoomed] = useState(false)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const imageRef = useRef<HTMLImageElement>(null)
 
-  if (!product) {
-    notFound()
+  useEffect(() => {
+    if (imageRef.current && imageRef.current.complete) {
+      setDimensions({
+        width: imageRef.current.naturalWidth,
+        height: imageRef.current.naturalHeight
+      })
+    }
+  }, [src])
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isZoomed) return
+
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
+
+    setPosition({ x, y })
   }
 
-  // Get related products (same gender and type)
-  const relatedProducts = {
-    homme: products.filter((p) => p.gender === 'homme' && p.id !== product.id).slice(0, 10),
-    femme: products.filter((p) => p.gender === 'femme' && p.id !== product.id).slice(0, 10)
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    setDimensions({
+      width: e.currentTarget.naturalWidth,
+      height: e.currentTarget.naturalHeight
+    })
+  }
+
+  const aspectRatio = dimensions.width && dimensions.height ? dimensions.width / dimensions.height : 4 / 3
+
+  return (
+    <div
+      className='relative w-full overflow-hidden bg-gray-100'
+      style={{ aspectRatio }}
+      onMouseEnter={() => setIsZoomed(true)}
+      onMouseLeave={() => setIsZoomed(false)}
+      onMouseMove={handleMouseMove}
+    >
+      <Image
+        ref={imageRef}
+        src={src}
+        alt={alt}
+        fill
+        className={`object-contain transition-transform duration-200 ${isZoomed ? 'scale-150' : 'scale-100'}`}
+        style={
+          isZoomed
+            ? {
+                transformOrigin: `${position.x}% ${position.y}%`
+              }
+            : undefined
+        }
+        onLoad={handleImageLoad}
+        sizes='(max-width: 768px) 100vw, 50vw'
+      />
+    </div>
+  )
+}
+
+export default function ProductPage(props: { params: Promise<{ id: string }> }) {
+  const [selectedImage, setSelectedImage] = useState(0)
+  const [product, setProduct] = useState<(typeof products)[0] | null>(null)
+  const [relatedProducts, setRelatedProducts] = useState<{
+    homme: typeof products
+    femme: typeof products
+  }>({ homme: [], femme: [] })
+
+  useEffect(() => {
+    async function loadData() {
+      const params = await props.params
+      const foundProduct = products.find((p) => p.id === params.id)
+
+      if (!foundProduct) {
+        notFound()
+        return
+      }
+
+      setProduct(foundProduct)
+
+      // Get related products (same gender and type)
+      setRelatedProducts({
+        homme: products.filter((p) => p.gender === 'homme' && p.id !== foundProduct.id).slice(0, 10),
+        femme: products.filter((p) => p.gender === 'femme' && p.id !== foundProduct.id).slice(0, 10)
+      })
+    }
+
+    loadData()
+  }, [props.params])
+
+  if (!product) {
+    return null // or a loading state
   }
 
   return (
@@ -49,12 +134,31 @@ export default async function ProductPage(props: { params: Promise<{ id: string 
 
       <div className='mt-8 grid grid-cols-1 gap-x-8 lg:grid-cols-2'>
         {/* Product Images */}
-        <div className='grid grid-cols-2 gap-4'>
-          {product.images.map((image, index) => (
-            <div key={index} className='relative aspect-square overflow-hidden'>
-              <Image src={image} alt={`${product.name} - Image ${index + 1}`} fill className='object-cover' />
-            </div>
-          ))}
+        <div className='space-y-4'>
+          {/* Main Image */}
+          <div className='w-full overflow-hidden rounded-lg'>
+            <ImageZoom src={product.images[selectedImage]} alt={`${product.name} - Image ${selectedImage + 1}`} />
+          </div>
+          {/* Thumbnail Grid */}
+          <div className='grid grid-cols-6 gap-4'>
+            {product.images.map((image, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedImage(index)}
+                className={`relative aspect-square overflow-hidden rounded-lg border-2 ${
+                  selectedImage === index ? 'border-primary' : 'border-transparent'
+                }`}
+              >
+                <Image
+                  src={image}
+                  alt={`${product.name} - Thumbnail ${index + 1}`}
+                  fill
+                  className='object-cover'
+                  sizes='(max-width: 768px) 16vw, 8vw'
+                />
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Product Info */}
