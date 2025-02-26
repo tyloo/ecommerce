@@ -8,16 +8,42 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { colors, conditions, filterOptions, sizes, sorts, types } from '@/data/filters'
 import { cn } from '@/lib/utils'
 import { Check, ChevronsUpDown, X } from 'lucide-react'
-import { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 export function Filters() {
-  const [sort, setSort] = useState('')
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const [sort, setSort] = useState(searchParams.get('sort') || '')
   const [filters, setFilters] = useState<Record<string, string>>({
-    type: '',
-    condition: '',
-    size: '',
-    color: ''
+    type: searchParams.get('type') || '',
+    condition: searchParams.get('condition') || '',
+    size: searchParams.get('size') || '',
+    color: searchParams.get('color') || ''
   })
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams.toString())
+
+    // Update filter params
+    Object.entries(filters).forEach(([key, value]) => {
+      if (value) {
+        params.set(key, value)
+      } else {
+        params.delete(key)
+      }
+    })
+
+    // Update sort param
+    if (sort) {
+      params.set('sort', sort)
+    } else {
+      params.delete('sort')
+    }
+
+    // Update URL without causing a page reload
+    router.push(`?${params.toString()}`, { scroll: false })
+  }, [filters, sort, router, searchParams])
 
   return (
     <div className='flex flex-col gap-4'>
