@@ -60,7 +60,8 @@ export const colors: Record<string, string> = {
 }
 
 export const sorts: Record<string, string> = {
-  newest: 'Nouveautés',
-  price_ascending: 'Prix croissant',
-  price_descending: 'Prix décroissant'
+  'name-asc': 'Nom (A-Z)',
+  'name-desc': 'Nom (Z-A)',
+  'price-asc': 'Prix croissant',
+  'price-desc': 'Prix décroissant'
 }
