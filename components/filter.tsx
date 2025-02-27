@@ -76,7 +76,7 @@ export function Filters() {
         </div>
       </div>
       <div className='flex flex-row items-center justify-between gap-2'>
-        <div>
+        <div className='flex flex-row gap-2'>
           {filters.type && (
             <ActiveFilter
               filter='type'
@@ -106,7 +106,7 @@ export function Filters() {
             />
           )}
         </div>
-        <div>
+        <div className='flex flex-row gap-2'>
           {filters.sort && (
             <ActiveFilter
               filter='sort'
@@ -179,8 +179,8 @@ function ActiveFilter({
 }) {
   return (
     <Badge className='gap-1 px-0.5 shadow-none'>
-      <div className='p-1 text-xs'>{filterOptions[filter]}</div>
-      <div className='bg-background text-foreground rounded-md p-1 text-xs'>{label}</div>
+      <div className='p-1 text-xs font-bold'>{filterOptions[filter]}</div>
+      <div className='bg-background text-foreground rounded-md px-2 py-1 text-xs'>{label}</div>
       <Button
         size='icon'
         variant='link'

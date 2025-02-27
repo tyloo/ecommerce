@@ -1,11 +1,15 @@
+import { Reinsurance } from '@/components/reinsurance'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Separator } from '@/components/ui/separator'
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react'
 import Link from 'next/link'
 
 export function Footer() {
   return (
     <footer className='bg-primary text-background'>
+      <Reinsurance />
+      <Separator />
       <div className='mx-auto max-w-7xl px-4 py-12'>
         <div className='grid grid-cols-1 gap-8 lg:grid-cols-4'>
           {/* Newsletter Section */}
@@ -141,7 +145,7 @@ export function Footer() {
                 Cookie Policy
               </Link>
             </div>
-            <p className='text-background/50 text-sm'>&copy; 2024 Costela. All rights reserved.</p>
+            <p className='text-background/50 text-sm'>&copy; 2025 Costela. All rights reserved.</p>
           </div>
         </div>
       </div>
