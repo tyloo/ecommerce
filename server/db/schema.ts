@@ -1,12 +1,18 @@
-import { index, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core'
+import { index, pgEnum, pgTable, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core'
 
-export const posts = pgTable(
-  'posts',
+export const moodEnum = pgEnum('color', ['primary', 'white'])
+
+export const collections = pgTable(
+  'collections',
   {
     id: serial('id').primaryKey(),
-    name: text('name').notNull(),
+    name: varchar('name').notNull(),
+    description: text('description'),
+    slug: varchar('slug').notNull().unique(),
+    image: varchar('image').notNull(),
+    color: moodEnum().notNull().default('primary'),
     createdAt: timestamp('createdAt').defaultNow().notNull(),
     updatedAt: timestamp('updatedAt').defaultNow().notNull()
   },
-  (table) => [index('Post_name_idx').on(table.name)]
+  (table) => [index('Collection_slug_idx').on(table.slug)]
 )

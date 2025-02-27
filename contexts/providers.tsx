@@ -20,8 +20,8 @@ export const Providers = ({ children }: PropsWithChildren) => {
   )
 
   return (
-    <ClerkProvider>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </ClerkProvider>
+    <QueryClientProvider client={queryClient}>
+      <ClerkProvider>{children}</ClerkProvider>
+    </QueryClientProvider>
   )
 }
