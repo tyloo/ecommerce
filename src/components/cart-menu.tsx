@@ -1,6 +1,5 @@
 'use client'
 
-import { CollectionCard } from '@/components/collection-card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -15,7 +14,6 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet'
-import { collections } from '@/data/collections'
 import { ShoppingBag, Trash } from 'lucide-react'
 import Image from 'next/image'
 
@@ -95,11 +93,7 @@ export function CartMenu() {
           <div className='p-4'>
             <div className='border-t pt-6'>
               <h3 className='mb-4 font-bold uppercase'>Vous aimerez aussi</h3>
-              <div className='grid grid-cols-2 gap-4'>
-                {Object.values(collections).map((collection) => (
-                  <CollectionCard key={collection.href} collection={collection} />
-                ))}
-              </div>
+              <div>Related products</div>
             </div>
           </div>
         </div>

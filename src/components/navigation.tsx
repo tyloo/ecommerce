@@ -16,6 +16,7 @@ import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import { navigation } from '@/data/navigation'
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs'
+import 'dotenv/config'
 import { ChevronRight, Mail, Menu, MessageCircleQuestion, Truck, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -82,18 +83,16 @@ function DesktopNavigation() {
                             key='collection-homme-polos'
                             collection={{
                               name: 'Polos',
-                              textColor: 'primary',
-                              href: '/collections/homme-polos',
-                              imageUrl: '/collections/homme-polos.webp'
+                              slug: 'homme-polos',
+                              image: '/collections/homme-polos.webp'
                             }}
                           />
                           <CollectionCard
                             key='collection-homme-new'
                             collection={{
                               name: 'Nouveautés',
-                              textColor: 'primary',
-                              href: '/collections/homme-new',
-                              imageUrl: '/collections/homme-new.webp'
+                              slug: 'homme-new',
+                              image: '/collections/homme-new.webp'
                             }}
                           />
                         </div>

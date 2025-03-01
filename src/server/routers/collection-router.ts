@@ -9,7 +9,7 @@ const getCollectionsParameters = z.object({
 })
 
 export const collectionRouter = j.router({
-  carouselCollections: publicProcedure.input(getCollectionsParameters).query(async ({ c, ctx, input }) => {
+  collectionsByGenderAndType: publicProcedure.input(getCollectionsParameters).query(async ({ c, ctx, input }) => {
     const { db } = ctx
     const collections = await db
       .select()
@@ -19,7 +19,7 @@ export const collectionRouter = j.router({
     return c.superjson(collections ?? null)
   }),
 
-  getMenuCollections: publicProcedure.query(async ({ c, ctx }) => {
+  getSearchMenuCollections: publicProcedure.query(async ({ c, ctx }) => {
     const { db } = ctx
     const menuCollections = await db
       .select()

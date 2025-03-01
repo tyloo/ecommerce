@@ -1,10 +1,10 @@
 import { collections } from '@/server/db/data/collections'
+import { products } from '@/server/db/data/products'
 import * as schema from '@/server/db/schema'
 import { neon } from '@neondatabase/serverless'
 import 'dotenv/config'
 import { drizzle } from 'drizzle-orm/neon-http'
 import { reset } from 'drizzle-seed'
-import { products } from './data/products'
 
 const sql = neon(process.env.DATABASE_URL!)
 const db = drizzle(sql, { schema })

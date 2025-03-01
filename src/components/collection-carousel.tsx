@@ -1,5 +1,6 @@
 'use client'
 
+import { CollectionCard } from '@/components/collection-card'
 import { Button } from '@/components/ui/button'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -8,7 +9,6 @@ import { TYPE_SIZE, TYPE_TYPE } from '@/server/db/schema'
 import { useQuery } from '@tanstack/react-query'
 import Link from 'next/link'
 import { useState } from 'react'
-import { NewCollectionCard } from './new-collection-card'
 
 type CollectionCarouselProps = {
   title: string
@@ -26,14 +26,14 @@ export function CollectionCarousel({ title, type, callToAction }: CollectionCaro
     male: useQuery({
       queryKey: [`get-collection-carousel-male-${type}`],
       queryFn: async () => {
-        const res = await client.collection.carouselCollections.$get({ gender: 'male', type })
+        const res = await client.collection.collectionsByGenderAndType.$get({ gender: 'male', type })
         return await res.json()
       }
     }),
     female: useQuery({
       queryKey: [`get-collection-carousel-female-${type}`],
       queryFn: async () => {
-        const res = await client.collection.carouselCollections.$get({ gender: 'female', type })
+        const res = await client.collection.collectionsByGenderAndType.$get({ gender: 'female', type })
         return await res.json()
       }
     })
@@ -54,13 +54,13 @@ export function CollectionCarousel({ title, type, callToAction }: CollectionCaro
       <Carousel className='mx-4 w-[calc(w-full-4rem)]'>
         <CarouselContent>
           {collections[activeTab as keyof typeof collections].isPending ? (
-            <div>Loading...</div>
+            <div className='flex w-screen items-center justify-center'>Loading...</div>
           ) : collections[activeTab as keyof typeof collections].error ? (
-            <div>Error</div>
+            <div className='flex w-screen items-center justify-center'>Error</div>
           ) : (
             collections[activeTab as keyof typeof collections].data?.map((collection, index) => (
               <CarouselItem key={index} className='basis-1/3 md:basis-1/4 lg:basis-1/5'>
-                <NewCollectionCard collection={collection} />
+                <CollectionCard collection={collection} />
               </CarouselItem>
             ))
           )}

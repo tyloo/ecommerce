@@ -1,13 +1,22 @@
-import type { Collection } from '@/data/collections'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export function CollectionCard({ collection, onClick }: { collection: Collection; onClick?: () => void }) {
+export function CollectionCard({
+  collection,
+  onClick
+}: {
+  collection: {
+    slug: string
+    name: string
+    image: string
+  }
+  onClick?: () => void
+}) {
   return (
-    <Link key={collection.href} href={collection.href} className='h-full w-full' onClick={onClick}>
+    <Link href={`/collections/${collection.slug}`} className='h-full w-full' onClick={onClick}>
       <div className='hover:border-primary group relative aspect-[237/315] w-full max-w-[237px] border-2 border-transparent'>
         <Image
-          src={collection.imageUrl}
+          src={collection.image}
           alt={collection.name}
           width={237}
           height={315}

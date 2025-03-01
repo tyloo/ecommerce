@@ -1,3 +1,4 @@
+import { CollectionCard } from '@/components/collection-card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
@@ -6,7 +7,6 @@ import { useQuery } from '@tanstack/react-query'
 import { Search } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { NewCollectionCard } from './new-collection-card'
 
 export function SearchMenu() {
   const [open, setOpen] = useState(false)
@@ -14,7 +14,7 @@ export function SearchMenu() {
   const { data, error, isPending } = useQuery({
     queryKey: ['get-menu-collections'],
     queryFn: async () => {
-      const res = await client.collection.getMenuCollections.$get()
+      const res = await client.collection.getSearchMenuCollections.$get()
       return await res.json()
     }
   })
@@ -84,7 +84,7 @@ export function SearchMenu() {
                 </div>
               ) : data ? (
                 data.map((collection) => (
-                  <NewCollectionCard
+                  <CollectionCard
                     key={`menu-collection-${collection.slug}`}
                     collection={collection}
                     onClick={() => setOpen(false)}
