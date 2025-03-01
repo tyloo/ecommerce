@@ -1,5 +1,5 @@
 {
-  "id": "2990053d-58bd-4be7-aecc-6ba969f44c7e",
+  "id": "815c1ec7-bcb6-4705-b36f-e4450a363307",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -14,8 +14,8 @@
           "primaryKey": true,
           "notNull": true
         },
-        "handle": {
-          "name": "handle",
+        "slug": {
+          "name": "slug",
           "type": "varchar",
           "primaryKey": false,
           "notNull": true
@@ -70,11 +70,11 @@
         }
       },
       "indexes": {
-        "Collection_handle_idx": {
-          "name": "Collection_handle_idx",
+        "Collection_slug_idx": {
+          "name": "Collection_slug_idx",
           "columns": [
             {
-              "expression": "handle",
+              "expression": "slug",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -119,74 +119,14 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "collection_handle_unique": {
-          "name": "collection_handle_unique",
+        "collection_slug_unique": {
+          "name": "collection_slug_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "handle"
+            "slug"
           ]
         }
       },
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.product_collection": {
-      "name": "product_collection",
-      "schema": "",
-      "columns": {
-        "product_id": {
-          "name": "product_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "collection_id": {
-          "name": "collection_id",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "product_collection_product_id_product_id_fk": {
-          "name": "product_collection_product_id_product_id_fk",
-          "tableFrom": "product_collection",
-          "tableTo": "product",
-          "columnsFrom": [
-            "product_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "product_collection_collection_id_collection_id_fk": {
-          "name": "product_collection_collection_id_collection_id_fk",
-          "tableFrom": "product_collection",
-          "tableTo": "collection",
-          "columnsFrom": [
-            "collection_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "product_collection_product_id_collection_id_pk": {
-          "name": "product_collection_product_id_collection_id_pk",
-          "columns": [
-            "product_id",
-            "collection_id"
-          ]
-        }
-      },
-      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -201,8 +141,8 @@
           "primaryKey": true,
           "notNull": true
         },
-        "handle": {
-          "name": "handle",
+        "slug": {
+          "name": "slug",
           "type": "varchar",
           "primaryKey": false,
           "notNull": true
@@ -251,9 +191,15 @@
           "primaryKey": false,
           "notNull": true
         },
-        "image": {
-          "name": "image",
-          "type": "varchar[]",
+        "images": {
+          "name": "images",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "collections": {
+          "name": "collections",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": true
         },
@@ -273,11 +219,11 @@
         }
       },
       "indexes": {
-        "Product_handle_idx": {
-          "name": "Product_handle_idx",
+        "Product_slug_idx": {
+          "name": "Product_slug_idx",
           "columns": [
             {
-              "expression": "handle",
+              "expression": "slug",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -337,11 +283,11 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "product_handle_unique": {
-          "name": "product_handle_unique",
+        "product_slug_unique": {
+          "name": "product_slug_unique",
           "nullsNotDistinct": false,
           "columns": [
-            "handle"
+            "slug"
           ]
         }
       },
