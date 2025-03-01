@@ -1,5 +1,5 @@
 {
-  "id": "d0848e0b-45ea-4d77-ac3d-c636739e01cc",
+  "id": "8916d1ee-4310-41c3-827a-feed7e017d60",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -32,19 +32,27 @@
           "primaryKey": false,
           "notNull": true
         },
+        "gender": {
+          "name": "gender",
+          "type": "gender",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'male'"
+        },
+        "type": {
+          "name": "type",
+          "type": "type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'default'"
+        },
         "image": {
           "name": "image",
           "type": "varchar",
           "primaryKey": false,
           "notNull": true
-        },
-        "color": {
-          "name": "color",
-          "type": "color",
-          "typeSchema": "public",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "'primary'"
         },
         "createdAt": {
           "name": "createdAt",
@@ -76,6 +84,36 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
+        },
+        "Collection_gender_idx": {
+          "name": "Collection_gender_idx",
+          "columns": [
+            {
+              "expression": "gender",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "Collection_type_idx": {
+          "name": "Collection_type_idx",
+          "columns": [
+            {
+              "expression": "type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
         }
       },
       "foreignKeys": {},
@@ -95,12 +133,22 @@
     }
   },
   "enums": {
-    "public.color": {
-      "name": "color",
+    "public.gender": {
+      "name": "gender",
       "schema": "public",
       "values": [
-        "primary",
-        "white"
+        "male",
+        "female"
+      ]
+    },
+    "public.type": {
+      "name": "type",
+      "schema": "public",
+      "values": [
+        "category",
+        "default",
+        "type",
+        "size"
       ]
     }
   },

@@ -1,5 +1,5 @@
 import { j } from '@/server/jstack'
-import { postRouter } from '@/server/routers/post-router'
+import { collectionRouter } from '@/server/routers/collection-router'
 
 /**
  * This is your base API.
@@ -14,7 +14,7 @@ const api = j.router().basePath('/api').use(j.defaults.cors).onError(j.defaults.
  * All routers in /server/routers should be added here manually.
  */
 const appRouter = j.mergeRouters(api, {
-  post: postRouter
+  collection: collectionRouter
 })
 
 export type AppRouter = typeof appRouter

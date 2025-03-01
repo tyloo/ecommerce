@@ -44,7 +44,7 @@ export function ProductCarousel({ title, products, callToAction }: ProductCarous
       <Carousel className='mx-4 w-[calc(w-full-4rem)]'>
         <CarouselContent>
           {limitedProducts[activeTab as keyof typeof products].map((product, index) => (
-            <CarouselItem key={index} className='basis-1/4'>
+            <CarouselItem key={index} className='basis-1/2 md:basis-1/3 lg:basis-1/4'>
               <ProductCard product={product} />
             </CarouselItem>
           ))}

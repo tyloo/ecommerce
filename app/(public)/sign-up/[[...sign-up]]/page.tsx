@@ -11,6 +11,7 @@ export default function Page() {
           alt='Image'
           className='absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale'
           fill
+          sizes='(max-width: 1024px) 0vw, 50vw'
         />
       </div>
       <div className='flex flex-col gap-4 p-6 md:p-10'>

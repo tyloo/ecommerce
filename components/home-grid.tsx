@@ -11,6 +11,7 @@ export function HomeGrid() {
             src='/home-sell.webp'
             alt='Sell your items'
             fill
+            sizes='(max-width: 1024px) 100vw, 50vw'
             className='object-cover transition-transform duration-300 group-hover:scale-110'
           />
           <div className='absolute inset-0 flex items-center justify-center bg-black/30'>
@@ -60,6 +61,7 @@ export function HomeGrid() {
             src='/home-buy.webp'
             alt='Buy your items'
             fill
+            sizes='(max-width: 1024px) 100vw, 50vw'
             className='object-cover transition-transform duration-300 group-hover:scale-110'
           />
           <div className='absolute inset-0 flex items-center justify-center bg-black/30'>
