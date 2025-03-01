@@ -1,3 +1,4 @@
+import { CollectionCarousel } from '@/components/collection-carousel'
 import { Concept } from '@/components/concept'
 import { Hero } from '@/components/hero'
 import { HomeGrid } from '@/components/home-grid'
@@ -27,9 +28,9 @@ export default async function Home() {
         products={{ homme: menProducts, femme: womenProducts }}
         callToAction={{ label: 'Découvrir', href: '#' }}
       />
-      <ProductCarousel title='Les sélections par taille' products={{ homme: menProducts, femme: womenProducts }} />
+      <CollectionCarousel title='Les sélections par taille' type='size' />
       <HomeGrid />
-      <ProductCarousel title='Toutes les catégories' products={{ homme: menProducts, femme: womenProducts }} />
+      <CollectionCarousel title='Toutes les catégories' type='type' />
     </main>
   )
 }

@@ -1,14 +1,22 @@
-import { CollectionTable, TYPE_TYPE } from '@/server/db/schema'
+import { CollectionTable, GENDER_FEMALE, GENDER_MALE, TYPE_SIZE, TYPE_TYPE } from '@/server/db/schema'
 import { j, publicProcedure } from '@/server/jstack'
-import { asc, eq } from 'drizzle-orm'
+import { and, asc, eq } from 'drizzle-orm'
 import { z } from 'zod'
 
-export const collectionRouter = j.router({
-  getCollections: publicProcedure.query(async ({ c, ctx }) => {
-    const { db } = ctx
-    const menuCollections = await db.select().from(CollectionTable)
+const getCollectionsParameters = z.object({
+  gender: z.enum([GENDER_MALE, GENDER_FEMALE]),
+  type: z.enum([TYPE_TYPE, TYPE_SIZE])
+})
 
-    return c.superjson(menuCollections ?? null)
+export const collectionRouter = j.router({
+  carouselCollections: publicProcedure.input(getCollectionsParameters).query(async ({ c, ctx, input }) => {
+    const { db } = ctx
+    const collections = await db
+      .select()
+      .from(CollectionTable)
+      .where(and(eq(CollectionTable.gender, input.gender), eq(CollectionTable.type, input.type)))
+
+    return c.superjson(collections ?? null)
   }),
 
   getMenuCollections: publicProcedure.query(async ({ c, ctx }) => {

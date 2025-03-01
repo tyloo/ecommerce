@@ -1,14 +1,24 @@
-import { CollectionCard } from '@/components/collection-card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { collections } from '@/data/collections'
+import { client } from '@/lib/client'
+import { useQuery } from '@tanstack/react-query'
 import { Search } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { NewCollectionCard } from './new-collection-card'
 
 export function SearchMenu() {
   const [open, setOpen] = useState(false)
+
+  const { data, error, isPending } = useQuery({
+    queryKey: ['get-menu-collections'],
+    queryFn: async () => {
+      const res = await client.collection.getMenuCollections.$get()
+      return await res.json()
+    }
+  })
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -62,9 +72,25 @@ export function SearchMenu() {
           <div className='flex flex-col gap-4'>
             <div className='text-sm font-bold uppercase'>Collections</div>
             <div className='mx-auto grid auto-rows-auto grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4'>
-              {Object.values(collections).map((collection) => (
-                <CollectionCard key={collection.href} collection={collection} onClick={() => setOpen(false)} />
-              ))}
+              {isPending ? (
+                <div className='flex h-full flex-col justify-center gap-4'>
+                  <div className='h-8 w-8 animate-spin rounded-full border-t-2 border-b-2 border-slate-200' />
+                  <div className='text-sm'>Loading...</div>
+                </div>
+              ) : error ? (
+                <div className='flex h-full flex-col justify-center gap-4'>
+                  <div className='text-red-500'>Error</div>
+                  <div className='text-sm'>{error.message}</div>
+                </div>
+              ) : data ? (
+                data.map((collection) => (
+                  <NewCollectionCard
+                    key={`menu-collection-${collection.slug}`}
+                    collection={collection}
+                    onClick={() => setOpen(false)}
+                  />
+                ))
+              ) : null}
             </div>
           </div>
         </div>
