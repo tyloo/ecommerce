@@ -12,11 +12,12 @@ async function main() {
   try {
     console.log('Seed started...')
 
+    console.log('Seeding collections...')
     await db.insert(schema.CollectionTable).values([
       {
         name: 'Homme',
         description: 'Collection Homme',
-        slug: 'homme',
+        handle: 'homme',
         image: '/collections/homme-new.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_CATEGORY
@@ -24,7 +25,7 @@ async function main() {
       {
         name: 'Nouveautés',
         description: 'Collection Nouveautés',
-        slug: 'homme-nouveautes',
+        handle: 'homme-nouveautes',
         image: '/collections/homme-new.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_DEFAULT
@@ -32,7 +33,7 @@ async function main() {
       {
         name: 'Polos',
         description: 'Collection Polos',
-        slug: 'homme-polos',
+        handle: 'homme-polos',
         image: '/collections/homme-polos.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_TYPE
@@ -40,7 +41,7 @@ async function main() {
       {
         name: 'Sweatshirts',
         description: 'Collection Sweatshirts',
-        slug: 'homme-sweatshirts',
+        handle: 'homme-sweatshirts',
         image: '/collections/homme-sweatshirts.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_TYPE
@@ -48,7 +49,7 @@ async function main() {
       {
         name: 'Survêtements',
         description: 'Collection Survêtements',
-        slug: 'homme-survetements',
+        handle: 'homme-survetements',
         image: '/collections/homme-survetements.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_TYPE
@@ -56,7 +57,7 @@ async function main() {
       {
         name: 'Manteaux & Vestes',
         description: 'Collection Manteaux & Vestes',
-        slug: 'homme-manteaux-vestes',
+        handle: 'homme-manteaux-vestes',
         image: '/collections/homme-manteaux-vestes.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_TYPE
@@ -64,7 +65,7 @@ async function main() {
       {
         name: 'T-shirts',
         description: 'Collection T-shirts',
-        slug: 'homme-t-shirts',
+        handle: 'homme-t-shirts',
         image: '/collections/homme-t-shirts.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_TYPE
@@ -72,7 +73,7 @@ async function main() {
       {
         name: 'Pullovers',
         description: 'Collection Pullovers',
-        slug: 'homme-pullovers',
+        handle: 'homme-pullovers',
         image: '/collections/homme-pullovers.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_TYPE
@@ -80,7 +81,7 @@ async function main() {
       {
         name: 'Pantalons & Shorts',
         description: 'Collection Pantalons & Shorts',
-        slug: 'homme-pantalons-shorts',
+        handle: 'homme-pantalons-shorts',
         image: '/collections/homme-pantalons-shorts.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_TYPE
@@ -88,7 +89,7 @@ async function main() {
       {
         name: 'Chemises',
         description: 'Collection Chemises',
-        slug: 'homme-chemises',
+        handle: 'homme-chemises',
         image: '/collections/homme-chemises.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_TYPE
@@ -96,7 +97,7 @@ async function main() {
       {
         name: 'Maroquinerie',
         description: 'Collection Maroquinerie',
-        slug: 'homme-maroquinerie',
+        handle: 'homme-maroquinerie',
         image: '/collections/homme-maroquinerie.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_TYPE
@@ -104,7 +105,7 @@ async function main() {
       {
         name: 'XS',
         description: 'Collection XS',
-        slug: 'homme-xs',
+        handle: 'homme-xs',
         image: '/collections/homme-xs.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_SIZE
@@ -112,7 +113,7 @@ async function main() {
       {
         name: 'S',
         description: 'Collection S',
-        slug: 'homme-s',
+        handle: 'homme-s',
         image: '/collections/homme-s.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_SIZE
@@ -120,7 +121,7 @@ async function main() {
       {
         name: 'M',
         description: 'Collection M',
-        slug: 'homme-m',
+        handle: 'homme-m',
         image: '/collections/homme-m.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_SIZE
@@ -128,7 +129,7 @@ async function main() {
       {
         name: 'L',
         description: 'Collection L',
-        slug: 'homme-l',
+        handle: 'homme-l',
         image: '/collections/homme-l.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_SIZE
@@ -136,7 +137,7 @@ async function main() {
       {
         name: 'XL',
         description: 'Collection XL',
-        slug: 'homme-xl',
+        handle: 'homme-xl',
         image: '/collections/homme-xl.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_SIZE
@@ -144,7 +145,7 @@ async function main() {
       {
         name: '2XL et plus',
         description: 'Collection 2XL et plus',
-        slug: 'homme-2xl-et-plus',
+        handle: 'homme-2xl-et-plus',
         image: '/collections/homme-2xl-et-plus.webp',
         gender: schema.GENDER_MALE,
         type: schema.TYPE_SIZE
@@ -152,7 +153,7 @@ async function main() {
       {
         name: 'Femme',
         description: 'Collection Femme',
-        slug: 'femme',
+        handle: 'femme',
         image: '/collections/femme-new.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_CATEGORY
@@ -160,7 +161,7 @@ async function main() {
       {
         name: 'Nouveautés',
         description: 'Collection Nouveautés',
-        slug: 'femme-nouveautes',
+        handle: 'femme-nouveautes',
         image: '/collections/femme-new.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_DEFAULT
@@ -168,7 +169,7 @@ async function main() {
       {
         name: 'Polos',
         description: 'Collection Polos',
-        slug: 'femme-polos',
+        handle: 'femme-polos',
         image: '/collections/femme-polos.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_TYPE
@@ -176,7 +177,7 @@ async function main() {
       {
         name: 'Sweatshirts',
         description: 'Collection Sweatshirts',
-        slug: 'femme-sweatshirts',
+        handle: 'femme-sweatshirts',
         image: '/collections/femme-sweatshirts.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_TYPE
@@ -184,7 +185,7 @@ async function main() {
       {
         name: 'Robes & Jupes',
         description: 'Collection Robes & Jupes',
-        slug: 'femme-robes-jupes',
+        handle: 'femme-robes-jupes',
         image: '/collections/femme-robes-jupes.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_TYPE
@@ -192,7 +193,7 @@ async function main() {
       {
         name: 'Manteaux et vestes',
         description: 'Collection Manteaux et vestes',
-        slug: 'femme-manteaux-et-vestes',
+        handle: 'femme-manteaux-et-vestes',
         image: '/collections/femme-manteaux-et-vestes.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_TYPE
@@ -200,7 +201,7 @@ async function main() {
       {
         name: 'Pullovers',
         description: 'Collection Pullovers',
-        slug: 'femme-pullovers',
+        handle: 'femme-pullovers',
         image: '/collections/femme-pullovers.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_TYPE
@@ -208,7 +209,7 @@ async function main() {
       {
         name: 'Pantalons & Shorts',
         description: 'Collection Pantalons & Shorts',
-        slug: 'femme-pantalons-shorts',
+        handle: 'femme-pantalons-shorts',
         image: '/collections/femme-pantalons-shorts.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_TYPE
@@ -216,7 +217,7 @@ async function main() {
       {
         name: 'Survêtements',
         description: 'Collection Survêtements',
-        slug: 'femme-survetements',
+        handle: 'femme-survetements',
         image: '/collections/femme-survetements.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_TYPE
@@ -224,7 +225,7 @@ async function main() {
       {
         name: 'Tops & Chemises',
         description: 'Collection Tops & Chemises',
-        slug: 'femme-tops-chemises',
+        handle: 'femme-tops-chemises',
         image: '/collections/femme-tops-chemises.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_TYPE
@@ -232,7 +233,7 @@ async function main() {
       {
         name: 'XS',
         description: 'Collection XS',
-        slug: 'femme-xs',
+        handle: 'femme-xs',
         image: '/collections/femme-xs.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_SIZE
@@ -240,7 +241,7 @@ async function main() {
       {
         name: 'S',
         description: 'Collection S',
-        slug: 'femme-s',
+        handle: 'femme-s',
         image: '/collections/femme-s.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_SIZE
@@ -248,7 +249,7 @@ async function main() {
       {
         name: 'M',
         description: 'Collection M',
-        slug: 'femme-m',
+        handle: 'femme-m',
         image: '/collections/femme-m.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_SIZE
@@ -256,7 +257,7 @@ async function main() {
       {
         name: 'L',
         description: 'Collection L',
-        slug: 'femme-l',
+        handle: 'femme-l',
         image: '/collections/femme-l.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_SIZE
@@ -264,7 +265,7 @@ async function main() {
       {
         name: 'XL',
         description: 'Collection XL',
-        slug: 'femme-xl',
+        handle: 'femme-xl',
         image: '/collections/femme-xl.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_SIZE
@@ -272,12 +273,16 @@ async function main() {
       {
         name: '2XL et plus',
         description: 'Collection 2XL et plus',
-        slug: 'femme-2xl-et-plus',
+        handle: 'femme-2xl-et-plus',
         image: '/collections/femme-2xl-et-plus.webp',
         gender: schema.GENDER_FEMALE,
         type: schema.TYPE_SIZE
       }
     ])
+
+    console.log('Seeding products...')
+
+    console.log('Linking products to collections...')
 
     console.log('Seed finished...')
   } catch (error) {
